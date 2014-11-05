@@ -1,24 +1,19 @@
 
 ###How to Use .vimrc###
-
   将来的に、install.vimみたいなものを作る予定です
   base.vimでちょっとは環境構築が楽になるかも…？
 
 
 1. ホームディレクトリに../cp_to_home/.vimrcを置く
- 
     ホームからvimrcにシンボリックリンクを張る方が好きです
 
 2. neobundle等を導入する
+  
   (git needed)
-
-
   "ココ、base.vimで自動化できるかも？
   mkdir -p ~/.vim/bundle
   git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
   git clone https://github.com/Shougo/vimproc ~/.vim/bundle/vimproc
-
-
 
   "ココはvimrcで自動化できているはず
   ~/.vim/bundle/vimproc に入り、make
@@ -27,11 +22,11 @@
 
 3. vimを起動し、:NeobundleInstall
 
-
 4. enjoy!
 
 
 ###機能について###
+
   normal:
     tc 等、tab作成に関するnoremap(H,Lでtab移動を含む)
     ,is VimShell起動
