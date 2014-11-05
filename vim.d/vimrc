@@ -51,7 +51,7 @@ if has('vim_starting')
       NeoBundle 'Shougo/vimfiler.vim'
       NeoBundle 'Shougo/unite.vim'
       NeoBundle 'Shougo/neomru.vim'
-      NeoBundle 'im_control', {'type' : 'nosync', 'base' : '~/.vim/bundle/manual'}
+      "NeoBundle 'im_control', {'type' : 'nosync', 'base' : '~/.vim/bundle/manual'}
       syntax on
       filetype plugin on
       filetype indent on
@@ -126,6 +126,8 @@ set pastetoggle=<F12>
 set nohlsearch
 set cursorline
 set t_Co=256
+set t_ut=
+
 colorscheme molokai
 syntax on
 filetype plugin indent on
