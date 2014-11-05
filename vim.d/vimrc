@@ -10,7 +10,10 @@ if has('vim_starting')
       filetype indent off
         execute 'set runtimepath+=' . expand('~/.vim/bundle/neobundle.vim')
       endif
-      call neobundle#rc(expand('~/.vim/bundle'))
+      "call neobundle#rc(expand('~/.vim/bundle'))
+      call neobundle#begin(expand('~/.vim/bundle'))
+      NeoBundleFetch 'Shougo/neobundle.vim'
+      call neobundle#end()
 
       " 多分これでインストール自動化される
       " 動かないなら、~/.vim/bundle/vimproc 内で以下のコマンドをOSに合わせて実行
@@ -24,7 +27,7 @@ if has('vim_starting')
             \ }
       
       NeoBundle 'git://github.com/kien/ctrlp.vim.git'
-      NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
+      "NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
       NeoBundle 'git://github.com/scrooloose/nerdtree.git'
       NeoBundle 'git://github.com/scrooloose/syntastic.git'
       NeoBundle 'Shougo/neocomplcache'
