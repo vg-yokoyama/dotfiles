@@ -1,7 +1,7 @@
 
 " ln -s ~/dotfiles/vim.d/vimrc ~/.vimrc
 
-"neobundle関係"{{{
+" neobundle "{{{
 "始めて使うPCでは必ずNeobundleを入れること
 set nocompatible
 
@@ -25,7 +25,8 @@ if has('vim_starting')
             \ 'unix' : 'make -f make_unix.mak',
             \ },
             \ }
-      
+     
+      "NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
       NeoBundle 'git://github.com/kien/ctrlp.vim.git'
       "NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
       NeoBundle 'git://github.com/scrooloose/nerdtree.git'
@@ -33,11 +34,9 @@ if has('vim_starting')
       NeoBundle 'Shougo/neocomplcache'
       NeoBundle 'Shougo/vimshell'
       "NeoBundle 'supermomonga/vimshell_kawaii'
-      NeoBundle 'TwitVim'
       NeoBundle 'basyura/twibill.vim'
+      NeoBundle 'basyura/TweetVim'
       NeoBundle 'https://github.com/basyura/bitly.vim.git'
-      NeoBundle 'https://github.com/basyura/TweetVim.git'
-      "NeoBundle 'https://github.com/basyura/twibill.vim.git'
       "NeoBundle 'https://github.com/h1mesuke/unite-outline.git'
       NeoBundle 'https://github.com/mattn/webapi-vim.git'
       NeoBundle 'https://github.com/tyru/open-browser.vim.git'
@@ -61,9 +60,14 @@ if has('vim_starting')
 
       " SSH クライアントの設定によってはマウスが使える（putty
       " だと最初からいける）
-      " set mouse=n
-"}}}
-" IME 設定です
+      " set mouse=n"}}}
+
+
+"noremap <F4> <ESC>:call Ld()<ENTER>
+"function! Ld()
+"  source ~/.vimrc
+"  echomsg 'source ~/.vimrc done'
+"endfunction
 
 noremap <F5> <ESC>:call RUN()<ENTER>
 function! RUN()
@@ -71,11 +75,21 @@ function! RUN()
   let ext = expand("%:e")
   if ext == "py"
     !python %
+  elseif ext == "tex"
+    !platex main; pbibtex main; platex main; dvipdfmx main;
+  elseif ext == "nasm"
+    !nasm %
   else
     !make %:r
   endif
   
 endfunction
+
+noremap <F6> <ESC>:call PDF()<ENTER>
+function! PDF()
+    !evince main.pdf
+endfunction
+
 
 highlight Normal ctermbg=none 
 
@@ -87,7 +101,7 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-noremap <c-h> 0
+noremap <c-h> ^
 noremap <c-l> $
 nnoremap <Space>/ *
 
@@ -482,3 +496,6 @@ if(!empty(neobundle#get_not_installed_bundle_names()))
     source ~/.vimrc
   endif
 end
+
+
+let g:tweetvim_display_icon=1
